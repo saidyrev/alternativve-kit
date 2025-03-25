@@ -37,6 +37,10 @@
 
     <link rel="stylesheet" href="{{ asset ('../sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- endbuild -->
 
     <!-- Page CSS -->
@@ -71,6 +75,19 @@
                   </span>
                 </a>
               </div>
+
+              @if ($errors->any())
+              <script>
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Login Gagal',
+                      text: '{{ $errors->first() }}',
+                      showConfirmButton: true,
+                      timer: 5000
+                  });
+              </script>
+              @endif
+  
               <!-- /Logo -->
               <h4 class="mb-1">Welcome to Alternativve! 👋</h4>
               <p class="mb-6">Silahkan Login Dengan Akun Anda!</p>
@@ -154,6 +171,7 @@
 
     <!-- Place this tag before closing body tag for github widget button. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    
   </body>
 </html>
 

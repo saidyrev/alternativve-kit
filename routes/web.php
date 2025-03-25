@@ -25,7 +25,7 @@ Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('r
 Route::post('register', [AuthController::class, 'register']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::middleware(['auth', 'role:superadmin'])->group(function () {
+Route::middleware(['auth', 'maintenance', 'role:superadmin'])->group(function () {
     Route::get('superadmin/register', [SuperadminController::class, 'showRegistrationForm'])->name('superadmin.register');
     Route::post('superadmin/register', [SuperadminController::class, 'register']);
 });
