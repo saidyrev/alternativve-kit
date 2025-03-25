@@ -79,11 +79,17 @@
               @if ($errors->any())
               <script>
                   Swal.fire({
+                      toast: true,
+                      position: 'top-end',
                       icon: 'error',
-                      title: 'Login Gagal',
-                      text: '{{ $errors->first() }}',
-                      showConfirmButton: true,
-                      timer: 5000
+                      title: '{{ $errors->first() }}',
+                      showConfirmButton: false,
+                      timer: 3000,
+                      timerProgressBar: true,
+                      didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer);
+                          toast.addEventListener('mouseleave', Swal.resumeTimer);
+                      }
                   });
               </script>
               @endif
